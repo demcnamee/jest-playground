@@ -1,9 +1,12 @@
 import { until } from 'selenium-webdriver';
 import { root } from './index';
 
-const introSelector = { css: '.App-intro' };
-const headerSelector = { css: '.App-header > h2' };
+const pageHeader = { css: '.page-header' };
+const projectName = { css: '.project-name' };
+const projectTagline = {css: '.project-tagline'};
 
-export const intro = () => root().findElement(introSelector);
+export const header = () => root().findElement(pageHeader);
 
-export const header = () => root().findElement(headerSelector);
+export const name = () => root().findElement(projectName);
+
+export const tagline = () => root().findElement(projectTagline);

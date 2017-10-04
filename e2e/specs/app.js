@@ -1,4 +1,4 @@
-import { intro, header } from '../pageObjects/app';
+import { name, tagline } from '../pageObjects/app';
 import { load } from '../pageObjects/index';
 
 describe('app', () => {
@@ -6,13 +6,13 @@ describe('app', () => {
     await load();
   });
 
-  it('should show the right intro', async () => {
-    expect(await intro().getText()).toBe(
-      'To get started, edit src/App.js and save to reload.'
+  it('should show the right page header content', async () => {
+    expect(await projectName().getText()).toBe(
+      'ui-automation-bootstrap'
     );
   });
 
-  it('should show the right header', async () => {
-    expect(await header().getText()).toBe('Welcome to React');
+  it('should show the right tagline', async () => {
+    expect(await tagline().getText()).toBe('Bootstrap a project with UI automation using Jest');
   });
 });
