@@ -1,4 +1,5 @@
 This project is a fork of Chris Price's 'react-app-webdriver' project and aims to utilise the fundamentals to provide a bootstrap for testers to set up UI automation across any project.
+
 It uses Jest as the test runner, embraces modern JavaScript features (including async/await, modules, fat-arrow functions, templated strings, etc.) and attempts to ensure that modern editors are able to provide useful auto-complete suggestions when authoring tests.
 
 # Contents
