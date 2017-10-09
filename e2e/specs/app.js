@@ -6,13 +6,11 @@ describe('app', () => {
     await load();
   });
 
-  it('should show the right page header content', async () => {
-    expect(await projectName().getText()).toBe(
-      'ui-automation-bootstrap'
-    );
+  it('should show the correct page header content', async () => {
+    expect(await name().getText()).toBe('ui-automation-bootstrap');
   });
 
-  it('should show the right tagline', async () => {
-    expect(await tagline().getText()).toBe('Bootstrap a project with UI automation using Jest');
+  it('should show the correct tagline', async () => {
+    expect(await tagline().getText()).toBe('Bootstrap for UI automation using Jest');
   });
 });

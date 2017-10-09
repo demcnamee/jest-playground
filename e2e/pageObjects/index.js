@@ -1,7 +1,7 @@
 import { until } from 'selenium-webdriver';
-import { driver, defaultTimeout } from '../helpers';
+import { driver, defaultTimeout } from '../helpers/driver';
 
-const rootSelector = { css: '.site-footer' };
+const rootSelector = { css: '[lang="en-US"]' };
 
 export const root = () => driver.findElement(rootSelector);
 

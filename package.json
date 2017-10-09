@@ -1,6 +1,6 @@
 {
-  "name": "react-app-webdriver",
-  "version": "0.0.0",
+  "name": "ui-automation-bootstrap",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
@@ -51,7 +51,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "e2e": "jest -c e2e/jest.config.js",
+    "e2e": "jest",
     "e2e-update": "webdriver-manager update --out_dir ../../e2e/selenium",
     "e2e-start": "webdriver-manager start --out_dir ../../e2e/selenium"
   },

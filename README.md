@@ -1,4 +1,5 @@
-This project demonstrates one way to add Selenium e2e tests to a `create-react-app` generated app. It uses Jest as the test runner, embraces modern JavaScript features (including async/await, modules, fat-arrow functions, templated strings, etc.) and attempts to ensure that modern editors are able to provide useful auto-complete suggestions when authoring tests.
+This project is a fork of Chris Price's 'react-app-webdriver' project and aims to utilise the fundamentals to provide a bootstrap for testers to set up UI automation across any project.
+It uses Jest as the test runner, embraces modern JavaScript features (including async/await, modules, fat-arrow functions, templated strings, etc.) and attempts to ensure that modern editors are able to provide useful auto-complete suggestions when authoring tests.
 
 # Contents
 
@@ -9,9 +10,7 @@ This project demonstrates one way to add Selenium e2e tests to a `create-react-a
 
 # Disclaimer
 
-This project isn't for everyone. In fact, if you're trying to add your first tests to a `create-react-app`, I'd go as far as to say it's almost definitely not for you. Instead I'd recommend reading over the [User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) first for a testing approach that's easier to work with and much faster to run!
-
-However, sometimes I've found Jest's jsdom testing isn't enough and I've needed to run tests in real browsers e.g. when taking performance measurements, testing a full stack, smoke testing the live system, testing functionality in a specific browser, etc.. For those cases, this project presents one possible solution that does not require you to `eject` yet still embraces modern JavaScript features and tooling. Specifically it allows you to share a consistent code style across your `e2e` code and your `src` code by running the same babel transforms and using the same test runner.
+This project should be for everyone!
 
 # Running Specs
 
