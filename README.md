@@ -48,13 +48,13 @@ You should see some stuff executing. Chrome opening and, all being well, a numbe
 
 Typically, a project will need a few relevant groupings of files. Here, we've used the following as a starting point for a top level structure - 
 
-```Project structure
+```Project Structure
   e2e
   --data
   --helpers
   --pageObjects
   --specs
-  ```
+```
 
 ## Data
 Here's where your static data goes. You can use this for login details, checkable text such as error messages, maybe some enumerated lists with transforms to make your specs more readable. And, any input data that you may reuse throughout your specs.
@@ -68,7 +68,7 @@ Some like to create page objects full of functional code. I prefer to keep these
 ## Specs
 Specs should be executable by themselves, not reliant on any other spec. That being said, particularly for end to end, you may want to group these for brevity. 
 
-# Upgrading the Boostrap
+# Upgrading the Bootstrap
 
 This is a bootstrap. You're going to want to change things around. Here's some options.
 
