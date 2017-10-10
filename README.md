@@ -5,9 +5,8 @@ You can read up the on the fundamentals there, then come back here for more.
 # Contents
 
 * [Running Specs](#running-specs)
-* [Upgrade](#upgrade)
-* [Writing Specs](#writing-specs)
-* [Writing Page Objects](#writing-page-objects)
+* [Project Structure](#project-structure)
+* [Upgrading the Bootstrap](#upgrading-the-bootstrap)
 * [Adding to an Existing Project](#adding-to-an-existing-project)
 
 # Disclaimer
@@ -69,9 +68,7 @@ Some like to create page objects full of functional code. I prefer to keep these
 ## Specs
 Specs should be executable by themselves, not reliant on any other spec. That being said, particularly for end to end, you may want to group these for brevity. 
 
-# Writing Page Objects
-
-# Upgrade
+# Upgrading the Boostrap
 
 This is a bootstrap. You're going to want to change things around. Here's some options.
 
