@@ -1,7 +1,12 @@
 import { Builder } from 'selenium-webdriver';
+import {Options as chromeOptions} from 'selenium-webdriver/chrome';
 
 export const driver = new Builder()
   .forBrowser('chrome')
+  .setChromeOptions(new chromeOptions()
+    .addArguments('start-maximized')
+    .setChromeBinaryPath('C:\\Users\\dmcnamee\\AppData\\Local\\Google\\Chrome SxS\\Application\\chrome.exe')
+  )
   .usingServer('http://localhost:4444/wd/hub')
   .build();
 

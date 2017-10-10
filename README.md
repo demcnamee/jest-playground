@@ -25,13 +25,7 @@ $ yarn run e2e-start
 
 Under the covers, the project uses `webdriver-manager` to manage the Selenium server. The first script uses it to download the latest Selenium package and drivers for your browsers. The second starts up a new local Selenium server which you'll need to leave running otherwise the tests won't have a Selenium server to connect to.
 
-We need something to test, so let's open a new terminal and serve up the app -
-
-```bash
-$ yarn start
-```
-
-This will build the app and open it in a browser as normal. Remember not to close the terminal or you'll see errors about not being able to load page.
+For now, if  you want to continue and get the specs running, leave it as is.
 
 Finally let's fire up another new terminal and kick off Jest to run the tests for us -
 
@@ -65,7 +59,17 @@ Values can be injected in to the tests by specifying them as globals when runnin
 $ yarn run e2e -- --globals "{\"baseUrl\": \"https://example.com\"}
 ```
 
-You can configure the default values for these globals and other Jest settings in `e2e/jestConfig.json`.
+You can configure the default values for these globals and other Jest settings in `package.json`.
+
+As this is meant as a starter for your own project, amend the `__baseUrl__` in the globals object to point to your own hosted environment. 
+
+```package.json
+    "jest"{
+      "globals": {
+        "__baseUrl__": "https://demcnamee.github.io/ui-automation-bootstrap/"
+      }
+    }
+```
 
 # Writing Specs
 
