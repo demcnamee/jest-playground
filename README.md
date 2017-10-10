@@ -7,7 +7,6 @@ You can read up the on the fundamentals there, then come back here for more.
 * [Running Specs](#running-specs)
 * [Project Structure](#project-structure)
 * [Upgrading the Bootstrap](#upgrading-the-bootstrap)
-* [Adding to an Existing Project](#adding-to-an-existing-project)
 
 # Disclaimer
 
@@ -92,7 +91,7 @@ I don't like having a separate terminal window open with the selenium server run
 
 So here's what you need to do - 
 
-In the package.json add the following into the scripts section:
+Add the following in the `scripts` section of the project's `package.json` -
 
 ```package.json
     "e2e-all" "run-p -r e2e-start e2e"
@@ -105,30 +104,3 @@ Make sure you terminate any terminals running webdriver-manager, then
 ```
 
 This utilises the npm-run-all package to run both 'e2e-start' and 'e2e' in parallel. This also leaves the option for developers to use a different terminal for webdriver-manager.
-
-## Adding in new packages
-
-## Adding to an Existing Project
-
-To convert an existing project to use these features -
-
-* Copy the `e2e` folder into the root of the project
-```bash
-$ cp -r react-app-webdriver/e2e <react-app>
-```
-* Install the additional dev dependencies -
-```bash
-$ yarn add --dev @types/jest jest selenium-webdriver webdriver-manager
-```
-* Add the following to the `scripts` section in the project's `package.json` -
-```js
-{
-  // ...
-  "scripts: {
-    // ...
-    "e2e": "jest -c e2e/jestConfig.json",
-    "e2e-update": "webdriver-manager update --out_dir ../../e2e/selenium",
-    "e2e-start": "webdriver-manager start --out_dir ../../e2e/selenium"
-  }
-}
-```
