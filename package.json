@@ -8,9 +8,6 @@
   },
   "devDependencies": {
     "@types/jest": "^19.2.3",
-    "jest": "20.0.3",
-    "selenium-webdriver": "^3.4.0",
-    "webdriver-manager": "^12.0.6",
     "autoprefixer": "7.1.0",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
@@ -33,15 +30,19 @@
     "file-loader": "0.11.1",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.28.0",
+    "jest": "20.0.3",
+    "npm-run-all": "^4.1.1",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.5",
     "promise": "7.1.1",
     "react-dev-utils": "^3.0.0",
     "react-error-overlay": "^1.0.7",
+    "selenium-webdriver": "^3.4.0",
     "style-loader": "0.17.0",
     "sw-precache-webpack-plugin": "0.9.1",
     "url-loader": "0.5.8",
+    "webdriver-manager": "^12.0.6",
     "webpack": "2.6.1",
     "webpack-dev-server": "2.4.5",
     "webpack-manifest-plugin": "1.1.0",
@@ -52,14 +53,12 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "e2e": "jest",
+    "e2e-all": "run-p -r e2e-start e2e",
     "e2e-update": "webdriver-manager update --out_dir ../../e2e/selenium",
     "e2e-start": "webdriver-manager start --out_dir ../../e2e/selenium"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./e2e/setupTests.js",
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
     "globals": {
       "__baseUrl__": "https://demcnamee.github.io/ui-automation-bootstrap/"
     },
