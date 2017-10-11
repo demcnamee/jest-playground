@@ -47,12 +47,12 @@ You should see some stuff executing. Chrome opening and, all being well, a numbe
 
 Typically, a project will need a few relevant groupings of files. Here, we've used the following as a starting point for a top level structure - 
 
-```Project Structure
+```
   e2e
-  --data
-  --helpers
-  --pageObjects
-  --specs
+  ...data
+  ...helpers
+  ...pageObjects
+  ...specs
 ```
 
 ## Data
