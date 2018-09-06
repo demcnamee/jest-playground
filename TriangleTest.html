@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			/* This is for displaying the page nicely. You can ignore this. */
+			html {
+				min-height: 100%; 
+				display: flex;
+			}
+			body {
+				font-size: 1.5em;
+				font-family: Arial, sans-serif;
+				padding: 15px;
+				width: 800px;
+				border: 1px solid black;
+				margin: auto;
+				text-align: center;
+				height: 450px;
+				position: relative;
+			}
+			form p {
+				width: 100%;
+			}
+			form label {
+				width: 20%;
+				text-align: right;
+				display: inline-block;
+			}
+			form input[id*="side-"] {
+				width: 75%;
+				font-size: 0.8em;
+			}
+			form input[type="submit"] {
+				font-size: 1em;
+			}
+			.left {
+				float: left; width: 50%;
+			}
+			.right {
+				float: right; width: 50%;
+				font-weight: bold;
+			}
+			.clear {
+				clear: both;
+			}
+			#triangle-type {
+				width: 304px;
+				font-weight: bold;
+				vertical-align: middle;
+				font-size: 1em;
+				text-align: center;
+				background-color: white;
+				border: 1px solid black;
+			}
+			#error {
+				position: absolute;
+				top: 20%; left: 0%; right: 0%; bottom: 20%;
+				background-color: pink;
+				display: none;
+			}
+			#error h1 {
+				display: inline-block; width: 90%; margin-left: 5%;
+			}
+			#error a {
+				display: inline-block; width: 5%; vertical-align: top; text-decoration: none; color: red;
+			}
+			#error a:active {
+				color: red;
+			}
+			#error a:visited {
+				color: red;
+			}
+		</style>
+		<title>Triangle Test</title>
+		<script>
+			var html = document.querySelector("html");
+
+			var resize = function() {
+				html.style.zoom = html.clientWidth / html.clientHeight > 900 / 550 ? html.clientWidth / 900 : html.clientHeight / 550;
+			}
+			resize();
+			window.onresize = resize;
+
+			var types = {"E": "Equilateral", "I": "Isosceles", "S": "Scalene", "X": "Not A Triangle"};
+			var colours = {"E": "blue", "I": "green", "S": "yellow", "X": "red"};
+			var date = "";
+			var response = "";
+			var sideA;
+			var sideB;
+			var sideC;
+
+			function drawTriangle(event) {
+				event.preventDefault();
+
+				calculateTriangleInfo();
+				var type = response.split(/\s/g)[1];
+
+				var rSideA, rSideB, rSideC;
+				sideA = parseFloat(sideA);
+				sideB = parseFloat(sideB);
+				sideC = parseFloat(sideC);
+
+				if (sideA == 6766) {
+					showError("Fatal Error! Hard drive is corrupted!");
+				}
+
+				if (sideA >= sideB) {
+					if (sideA >= sideC ) { rSideC = sideA; rSideA = sideB; rSideB = sideC; }
+					else { rSideC = sideC; rSideA = sideA; rSideB = sideA; }
+				}
+				else { rSideC= sideB; rSideA = sideA; rSideB = sideC; }
+
+				var factor = rSideC / 300;
+				rSideA /= factor;
+				rSideB /= factor;
+
+				var x = ((300 * 300) + (rSideA * rSideA) - (rSideB * rSideB)) / 600;
+				var y = 300 - Math.sqrt((rSideA * rSideA) - (x * x));
+
+				var pointA = [2, 300];
+				var pointB = [302, 300];
+				var pointC = [2 + x, y];
+
+				var path = "M " + pointA[0] + " " + pointA[1] + " L " + pointB[0] + " " + pointB[1] + " L " + pointC[0] + " " + pointC[1] + " Z";
+
+				document.getElementById("triangle-path").setAttribute("d", path);
+				document.getElementById("triangle-path").setAttribute("fill", colours[type]);
+
+				document.getElementById("triangle-type").value = types[type];
+				document.getElementById("triangle-type").style.color = "dark" + colours[type];
+			}
+
+			function calculateTriangleInfo() {
+
+				date += new Date().toLocaleString();
+
+				sideA = document.getElementById("side-a").value;
+				sideB = document.getElementById("side-b").value;
+				sideC = document.getElementById("side-c").value;
+
+				var result;
+
+				var sideANum = parseFloat(sideA),
+					sideBNum = parseFloat(sideB),
+					sideCNum = parseFloat(sideC);
+
+				if (sideANum !== sideBNum && sideBNum !== sideCNum && sideCNum !== sideANum) {
+					result = "This is a scalene triangle";
+					response = "TYPE:\tS\n";
+				}
+				
+				if (sideANum === sideBNum || sideBNum === sideCNum || sideCNum === sideANum) {
+					result = "This is an isosceles triangle";
+					response = "TYPE:\tI\n";
+				}
+
+				if (sideANum === sideBNum && sideBNum === sideCNum) {
+					result = "This is an equilateral triangle";
+					response = "TYPE:\tE\n";
+				}
+
+				if (sideANum>= sideBNum+sideCNum || sideBNum>= sideANum+sideCNum || sideCNum>= sideBNum+sideANum ||
+					isNaN(sideANum) || isNaN(sideBNum) || isNaN(sideCNum))
+				{
+					result = "This cannot be a triangle.<BR>";
+					response = "TYPE:\tX\n";
+				}
+
+				if (/[^0-9\.]/.test(sideA) || sideA == 0) {
+					result = "Side A is not a legal value";
+					response += "SIDEA.ERROR:\tILLEGAL CHARACTER\n";
+				}
+				if (/[^0-9\.]/.test(sideB) || sideB == 0) {
+					result = "Side B is not a legal value";
+					response += "SIDEB.ERROR:\tILLEGAL CHARACTER\n";
+				}
+				if (/[^0-9\.]/.test(sideC) || sideC == 0) {
+					result = "Side C is not a legal value";
+					response += "SIDEC.ERROR:\tILLEGAL CHARACTER\n";
+				}
+
+				if (sideA === "") {
+					sideA = "<blank>";
+					response += "SIDEA.ERROR:\tBLANK\n";
+				}
+				if (sideB === "") {
+					sideB = "<blank>";
+					response += "SIDEB.ERROR:\tBLANK\n";
+				}
+				if (sideC === "") {
+					sideC = "<blank>";
+					response += "SIDEC.ERROR:\tBLANK\n";
+				}
+
+				console.log(date);
+				console.log(response);
+				console.log("SIDEA", sideA);
+				console.log("SIDEB", sideB);
+				console.log("SIDEC", sideC);
+			}
+
+			function showError(text) {
+				document.getElementById("error-text").innerHTML = text;
+				document.getElementById("error").style.display = "block";
+			}
+
+			function closeError() {
+				document.getElementById("error").style.display = "none";
+			}
+
+			var log = console.log;
+			var logKey = "F12";
+		</script>
+	</head>
+	<body>
+		<div class="left">
+			<p>
+				Enter three numbers. These will be treated as the dimensions of a triangle.
+				When you press the "Check" button, the program will display the type of
+				triangle that you specified.
+			</p>
+			<form onsubmit="drawTriangle(event)">
+				<p><label for="side-a">Side A:</label> <input type="text" id="side-a" autocomplete="off" /></p>
+
+				<p><label for="side-b">Side B:</label> <input type="text" id="side-b" autocomplete="off" pattern="[0-9A-z.]+"/></p>
+				<p><label for="side-c">Side C:</label> <input type="text" id="side-c" autocomplete="off" pattern="[\-0-9.]+"/></p>
+				<input type="submit" value="Check" />
+			</form>
+		</div>
+		<div class="right">
+			<p>
+				Results:
+				<input id="triangle-type" disabled />
+			</p>
+
+			<svg width="304" height="304" style="overflow: visible;">
+				<rect x="0" y="0" width="304" height="304" fill="lightgray" stroke="black" stroke-width="3" />
+				<path id="triangle-path" stroke="black" stroke-width="3" d="" />
+			</svg>
+		</div>
+		<div class="clear"></div>
+
+		<div id="error">
+			<h1>
+				Error
+			<!-- Remove Whitespace using >< -->
+			</h1><a href="#close">&cross;</a>
+			<p id="error-text"></p>
+			<button onclick="closeError()">OK</button>
+		</div>
+	</body>
+</html>

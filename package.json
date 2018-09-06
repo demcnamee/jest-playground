@@ -38,7 +38,7 @@
     "promise": "7.1.1",
     "react-dev-utils": "^3.0.0",
     "react-error-overlay": "^1.0.7",
-    "selenium-webdriver": "^3.4.0",
+    "selenium-webdriver": "^3.8.0",
     "style-loader": "0.17.0",
     "sw-precache-webpack-plugin": "0.9.1",
     "url-loader": "0.5.8",
@@ -52,7 +52,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "e2e": "jest",
+    "e2e": "jest --runInBand",
     "e2e-all": "run-p -r e2e-start e2e",
     "e2e-update": "webdriver-manager update --out_dir ../../e2e/selenium",
     "e2e-start": "webdriver-manager start --out_dir ../../e2e/selenium"
@@ -60,7 +60,7 @@
   "jest": {
     "setupTestFrameworkScriptFile": "./e2e/setupTests.js",
     "globals": {
-      "__baseUrl__": "https://demcnamee.github.io/ui-automation-bootstrap/"
+      "__baseUrl__": "c:\\dev\\projects\\triangle-test\\TriangleTest.html"
     },
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
@@ -69,7 +69,6 @@
       "**/specs/**/*.js"
     ],
     "testEnvironment": "node",
-    "testURL": "http://localhost",
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
